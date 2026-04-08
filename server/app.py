@@ -24,6 +24,7 @@ import gradio as gr
 from env.environment import LogAnalyzerEnv
 from env.models import Action
 from fastapi import FastAPI
+from fastapi.responses import RedirectResponse
 app = FastAPI()
 # ──────────────────────────────────────────────────────────────
 # Global state (simple; single-user HF Space)

@@ -267,7 +267,7 @@ Grader: rubric across 4 dimensions.
         inputs=[action_input],
         outputs=[obs_display, reward_display, state_display],
     )
-    app = mount_gradio_app(app, demo, path="/")
+    app = mount_gradio_app(app, demo, path="/ui")
 
 
     @app.post("/reset")

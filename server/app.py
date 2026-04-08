@@ -269,6 +269,11 @@ Grader: rubric across 4 dimensions.
     )
     app = mount_gradio_app(app, demo, path="/ui")
 
+    @app.get("/")
+    def root():
+        return RedirectResponse(url="/ui")
+    
+
 
     @app.post("/reset")
     def reset():

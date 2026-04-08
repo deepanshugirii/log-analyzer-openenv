@@ -158,7 +158,7 @@ docker run -p 7860:7860 log-analyzer
 
 ---
 
-## 📈 Baseline Scores
+## 📈 BEST Scores (gpt-4o-mini)
 
 | Task        | Score    |
 | ----------- | -------- |

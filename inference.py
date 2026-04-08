@@ -128,7 +128,7 @@ def run_task(
     """Run a single task episode and return the result."""
     env = LogAnalyzerEnv(task_id=task_id)
     obs = env.reset()
-    print(f"[START] task={task_id} model={model} max_steps={obs.max_steps}")
+    print(f"[START] task={task_id} env=openenv model={model}")
     # ── Build the initial user message ────────────────────────
     # For task2: inject block IDs BEFORE the logs so a 7B model sees them
     # at the start of context, not buried after 50 lines of log text.
@@ -188,6 +188,7 @@ def run_task(
 
     final_reward = None
     step_count = 0
+    rewards_list = []
 
     while not env._done:
         step_count += 1
@@ -230,13 +231,19 @@ def run_task(
         result = env.step(action)
         obs = result.observation
         done_str = str(result.done).lower()
+        reward_val = result.reward.score if result.reward else 0.0
+        rewards_list.append(f"{reward_val:.2f}")
+
+        error_str = getattr(result, "error", None)
+        error_str = error_str if error_str else "null"
+
         print(
             f"[STEP] step={step_count} "
             f"action={action.action_type} "
-            f"reward={result.reward.score if result.reward else 0.0} "
-            f"done={done_str}"
+            f"reward={reward_val:.2f} "
+            f"done={done_str} "
+            f"error={error_str}"
         )
-
         if result.reward is not None:
             final_reward = result.reward
 
@@ -267,8 +274,8 @@ def run_task(
     score = final_reward.score if final_reward else 0.0
     print(
         f"[END] success=true "
-        f"score={score:.4f} "
-        f"steps={step_count}"
+        f"steps={step_count} "
+        f"rewards={','.join(rewards_list)}"
     )
     partial = final_reward.partial_scores if final_reward else {}
     feedback = final_reward.feedback if final_reward else "No reward (episode ended without submit)."
@@ -318,17 +325,18 @@ def main():
                         help="OpenAI-compatible API base URL")
     parser.add_argument("--verbose", action="store_true", default=True)
     args = parser.parse_args()
+    API_BASE_URL = os.getenv("API_BASE_URL", "https://api.openai.com/v1")
+    MODEL_NAME = os.getenv("MODEL_NAME", "gpt-4o-mini")
+    HF_TOKEN = os.getenv("HF_TOKEN")
 
-    api_key = os.environ.get("OPENAI_API_KEY")
-    if not api_key:
-        print("ERROR: OPENAI_API_KEY environment variable not set.")
-        sys.exit(1)
+    if HF_TOKEN is None:
+        raise ValueError("HF_TOKEN environment variable is required")
 
-    client_kwargs: Dict[str, Any] = {"api_key": api_key}
-    if args.base_url:
-        client_kwargs["base_url"] = args.base_url
+    client = OpenAI(
+        base_url=API_BASE_URL,
+        api_key=HF_TOKEN
+    )
 
-    client = OpenAI(**client_kwargs)
 
     tasks_to_run = TASKS if args.task == "all" else [args.task]
 
@@ -340,7 +348,7 @@ def main():
 
     all_results = []
     for task_id in tasks_to_run:
-        result = run_task(client, args.model, task_id, verbose=args.verbose)
+        result = run_task(client, MODEL_NAME, task_id, verbose=args.verbose)
         all_results.append(result)
 
     # Summary

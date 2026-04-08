@@ -275,15 +275,26 @@ Grader: rubric across 4 dimensions.
         global _env
         _env = LogAnalyzerEnv(task_id="task1")
         obs = _env.reset()
-        return obs.dict()
+        return obs.model_dump()
 
 
     @app.post("/step")
     def step(action: dict):
         global _env
-        act = Action(action_type=action["action_type"], payload=action.get("payload", {}))
+        act = Action(
+            action_type=action["action_type"],
+            payload=action.get("payload", {})
+        )
         result = _env.step(act)
-        return result.dict()
+        return {
+            "observation": result.observation.model_dump(),
+            "reward": result.reward.score if result.reward else 0.0,
+            "done": result.done,
+            "info": result.info,
+        }
+
+
+
 
 
     @app.get("/state")

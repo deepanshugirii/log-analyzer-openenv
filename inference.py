@@ -1,5 +1,5 @@
 """
-baseline.py
+inference.py
 
 Baseline inference script for the Log Analyzer OpenEnv environment.
 Runs a language model (via OpenAI-compatible API) against all 3 tasks
@@ -7,20 +7,20 @@ and reports reproducible scores.
 
 Usage:
     export OPENAI_API_KEY=sk-...
-    python baseline.py
+    python inference.py
 
     # Run a specific task only:
-    python baseline.py --task task1
+    python inference.py --task task1
 
     # Use a different model:
-    python baseline.py --model gpt-4o-mini
+    python inference.py --model gpt-4o-mini
 
     # Use Anthropic-compatible endpoint:
-    python baseline.py --base-url https://api.anthropic.com/v1 --model claude-3-haiku-20240307
+    python inference.py --base-url https://api.anthropic.com/v1 --model claude-3-haiku-20240307
 
 Environment variables:
-    OPENAI_API_KEY      Required. API key for the LLM provider.
-    OPENAI_BASE_URL     Optional. Defaults to OpenAI's endpoint.
+    HF_TOKEN      Required. API key for the LLM provider.
+    API_BASE_URL     Optional. Defaults to OpenAI's endpoint.
 """
 
 from __future__ import annotations

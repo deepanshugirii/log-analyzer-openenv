@@ -1,0 +1,20 @@
+Line 01: [81109 212338] INFO  dfs.DataNode$PacketResponder: Received block blk_-518701095493827363 of size 67108864 from /10.251.214.67
+Line 02: [81109 212904] INFO  dfs.DataNode$PacketResponder: Received block blk_8408125361497769001 of size 67108864 from /10.251.70.211
+Line 03: [81109 213009] INFO  dfs.DataNode$PacketResponder: Received block blk_7577595658377008671 of size 67108864 from /10.251.71.97
+Line 04: [81109 213217] INFO  dfs.DataNode$PacketResponder: PacketResponder 0 for block blk_-5852844080027817147 terminating
+Line 05: [81109 213353] INFO  dfs.DataNode$PacketResponder: Received block blk_-2129171714384027465 of size 67108864 from /10.251.75.228
+Line 06: [81109 213510] INFO  dfs.DataNode$PacketResponder: PacketResponder 0 for block blk_9093049293972551787 terminating
+Line 07: [81109 213837] INFO  dfs.FSDataset: Deleting block blk_1781953582842324563 file /mnt/hadoop/dfs/data/current/subdir5/blk_1781953582842324563
+Line 08: [81109 213907] INFO  dfs.DataNode$DataXceiver: 10.251.91.229:50010 Served block blk_-3358448553918665902 to /10.251.91.229
+Line 09: [81109 213908] INFO  dfs.DataNode$DataXceiver: 10.251.39.192:50010 Served block blk_-5341992729755584578 to /10.251.39.192
+Line 10: [81109 214009] INFO  dfs.DataNode$DataXceiver: 10.250.5.237:50010 Served block blk_3166960787499091856 to /10.251.43.147
+Line 11: [81109 214402] WARN  dfs.DataNode$DataXceiver: 10.251.126.255:50010:Got exception while serving blk_8376667364205250596 to /10.251.91.159:
+Line 12: [81109 215136] WARN  dfs.DataNode$DataXceiver: 10.251.199.19:50010:Got exception while serving blk_8466246428293623262 to /10.251.106.37:
+Line 13: [81109 215259] WARN  dfs.DataNode$DataXceiver: 10.250.9.207:50010:Got exception while serving blk_-3140754468249228022 to /10.250.9.207:
+Line 14: [81109 215702] WARN  dfs.DataNode$DataXceiver: 10.251.202.134:50010:Got exception while serving blk_3441699978641526775 to /10.251.126.5:
+Line 15: [81109 220403] WARN  dfs.DataNode$DataXceiver: 10.251.107.227:50010:Got exception while serving blk_-6290631608800952376 to /10.251.109.209:
+Line 16: [81109 221151] WARN  dfs.DataNode$DataXceiver: 10.250.10.144:50010:Got exception while serving blk_5126469776250053435 to /10.250.11.100:
+Line 17: [81109 222041] WARN  dfs.DataNode$DataXceiver: 10.251.67.113:50010:Got exception while serving blk_-62891505109755100 to /10.250.7.96:
+Line 18: [81109 222342] WARN  dfs.DataNode$DataXceiver: 10.251.74.79:50010:Got exception while serving blk_2244903517044280975 to /10.251.74.134:
+Line 19: [81109 224054] WARN  dfs.DataNode$DataXceiver: 10.251.126.255:50010:Got exception while serving blk_2879780987351022871 to /10.251.39.144:
+Line 20: [81109 224234] WARN  dfs.DataNode$DataXceiver: 10.251.73.220:50010:Got exception while serving blk_4934527196392001803 to /10.251.203.246:

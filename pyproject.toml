@@ -1,0 +1,19 @@
+[project]
+name = "log-analyzer-openenv"
+version = "0.1.0"
+description = "OpenEnv Log Analyzer environment"
+authors = [
+    {name = "Deepanshu"}
+]
+dependencies = [
+    "openai",
+    "pydantic",
+    "gradio",
+    "openenv-core"
+]
+
+[build-system]
+requires = ["setuptools", "wheel"]
+build-backend = "setuptools.build_meta"
+[project.scripts]
+server = "server.app:main"

@@ -1,0 +1,49 @@
+{
+  "model": "gpt-4o-mini",
+  "tasks": [
+    {
+      "task_id": "task1",
+      "score": 0.95,
+      "partial_scores": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0
+      },
+      "feedback": "Score: 1.00 (F1). Perfect! All WARN lines correctly identified. (Penalties deducted: 0.05.)",
+      "steps_taken": 1,
+      "penalties": 0.05
+    },
+    {
+      "task_id": "task2",
+      "score": 0.95,
+      "partial_scores": {
+        "detection_f1": 1.0,
+        "detection_precision": 1.0,
+        "detection_recall": 1.0,
+        "anomaly_type_accuracy": 1.0,
+        "severity_accuracy": 1.0
+      },
+      "feedback": "Final score: 1.00. Detection F1: 1.00 (precision=1.00, recall=1.00). Anomaly type accuracy: 1.00. Severity accuracy: 1.00. (Penalties deducted: 0.05.)",
+      "steps_taken": 1,
+      "penalties": 0.05
+    },
+    {
+      "task_id": "task3",
+      "score": 0.95,
+      "partial_scores": {
+        "root_cause_component": 0.35,
+        "timeline_key_events": 0.25,
+        "affected_components": 0.2,
+        "remediation_valid_steps": 0.2,
+        "root_cause_raw": 1.0,
+        "timeline_raw": 1.0,
+        "components_raw": 1.0,
+        "remediation_raw": 1.0
+      },
+      "feedback": "Final score: 1.00. Root cause: 1.00/1.0 (\u2713 predicted='dfs.DataNode$DataXceiver', expected='dfs.DataNode$DataXceiver'). Timeline: 1.00/1.0 (3 events provided, 3 key events expected). Affected components: 1.00/1.0 (2 provided). Remediation: 1.00/1.0 (5 steps provided). (Penalties deducted: 0.05.)",
+      "steps_taken": 1,
+      "penalties": 0.05
+    }
+  ],
+  "average_score": 0.95
+}

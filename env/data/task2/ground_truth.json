@@ -1,0 +1,151 @@
+{
+  "task": "anomaly_classification",
+  "description": "Identify anomalous lines, classify their anomaly type, and assign severity (critical / warning / info).",
+  "anomalies": [
+    {
+      "line_number": 2,
+      "block_ids": [
+        "blk_8408125361497769001"
+      ],
+      "anomaly_type": "ANOMALOUS_BLOCK_ACTIVITY",
+      "severity": "info",
+      "component": "dfs.DataNode$PacketResponder"
+    },
+    {
+      "line_number": 7,
+      "block_ids": [
+        "blk_-2918118818249673980"
+      ],
+      "anomaly_type": "DATA_SERVE_EXCEPTION",
+      "severity": "warning",
+      "component": "dfs.DataNode$DataXceiver"
+    },
+    {
+      "line_number": 8,
+      "block_ids": [
+        "blk_8376667364205250596"
+      ],
+      "anomaly_type": "DATA_SERVE_EXCEPTION",
+      "severity": "warning",
+      "component": "dfs.DataNode$DataXceiver"
+    },
+    {
+      "line_number": 9,
+      "block_ids": [
+        "blk_8466246428293623262"
+      ],
+      "anomaly_type": "DATA_SERVE_EXCEPTION",
+      "severity": "warning",
+      "component": "dfs.DataNode$DataXceiver"
+    },
+    {
+      "line_number": 10,
+      "block_ids": [
+        "blk_-3140754468249228022"
+      ],
+      "anomaly_type": "DATA_SERVE_EXCEPTION",
+      "severity": "warning",
+      "component": "dfs.DataNode$DataXceiver"
+    },
+    {
+      "line_number": 11,
+      "block_ids": [
+        "blk_3441699978641526775"
+      ],
+      "anomaly_type": "DATA_SERVE_EXCEPTION",
+      "severity": "warning",
+      "component": "dfs.DataNode$DataXceiver"
+    },
+    {
+      "line_number": 13,
+      "block_ids": [
+        "blk_-305633040016166849"
+      ],
+      "anomaly_type": "DATA_SERVE_EXCEPTION",
+      "severity": "warning",
+      "component": "dfs.DataNode$DataXceiver"
+    },
+    {
+      "line_number": 14,
+      "block_ids": [
+        "blk_-4841792440390267307"
+      ],
+      "anomaly_type": "DATA_SERVE_EXCEPTION",
+      "severity": "warning",
+      "component": "dfs.DataNode$DataXceiver"
+    },
+    {
+      "line_number": 15,
+      "block_ids": [
+        "blk_5905933788014151041"
+      ],
+      "anomaly_type": "DATA_SERVE_EXCEPTION",
+      "severity": "warning",
+      "component": "dfs.DataNode$DataXceiver"
+    },
+    {
+      "line_number": 16,
+      "block_ids": [
+        "blk_4934527196392001803"
+      ],
+      "anomaly_type": "DATA_SERVE_EXCEPTION",
+      "severity": "warning",
+      "component": "dfs.DataNode$DataXceiver"
+    },
+    {
+      "line_number": 17,
+      "block_ids": [
+        "blk_7940316270494947483"
+      ],
+      "anomaly_type": "DATA_SERVE_EXCEPTION",
+      "severity": "warning",
+      "component": "dfs.DataNode$DataXceiver"
+    },
+    {
+      "line_number": 34,
+      "block_ids": [
+        "blk_2096692261399680562"
+      ],
+      "anomaly_type": "ANOMALOUS_BLOCK_ACTIVITY",
+      "severity": "info",
+      "component": "dfs.FSNamesystem"
+    },
+    {
+      "line_number": 38,
+      "block_ids": [
+        "blk_278357163850888"
+      ],
+      "anomaly_type": "ANOMALOUS_BLOCK_ACTIVITY",
+      "severity": "info",
+      "component": "dfs.FSNamesystem"
+    },
+    {
+      "line_number": 49,
+      "block_ids": [
+        "blk_6996194389878584395"
+      ],
+      "anomaly_type": "ANOMALOUS_BLOCK_ACTIVITY",
+      "severity": "info",
+      "component": "dfs.DataBlockScanner"
+    }
+  ],
+  "total_lines": 50,
+  "anomaly_types_reference": {
+    "DATA_SERVE_EXCEPTION": "DataNode threw exception while serving a block to a client",
+    "DATANODE_WARNING": "DataNode issued a non-exception warning",
+    "ANOMALOUS_BLOCK_ACTIVITY": "Block ID linked to a known anomaly trace"
+  },
+  "severity_levels": [
+    "critical",
+    "warning",
+    "info"
+  ],
+  "scoring": {
+    "method": "weighted_partial_credit",
+    "weights": {
+      "detection": 0.4,
+      "anomaly_type": 0.35,
+      "severity": 0.25
+    }
+  }
+}

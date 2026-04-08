@@ -1,0 +1,109 @@
+# openenv.yaml
+# OpenEnv environment metadata for Log Analyzer
+
+name: log-analyzer
+version: "1.0.0"
+description: >
+  A real-world HDFS server log analysis environment where an agent acts
+  as a DevOps/SRE engineer. Tasks range from finding warning lines (easy)
+  to classifying anomalies (medium) to full root cause analysis (hard).
+
+tags:
+  - openenv
+  - log-analysis
+  - devops
+  - sre
+  - hdfs
+  - anomaly-detection
+
+tasks:
+  - id: task1
+    name: Warning Detection
+    difficulty: easy
+    max_steps: 5
+    scoring: f1_score
+    description: >
+      Given 20 HDFS log lines, identify all line numbers (1-indexed)
+      containing WARN-level events. Pure set comparison grader.
+
+  - id: task2
+    name: Anomaly Classification
+    difficulty: medium
+    max_steps: 7
+    scoring: weighted_partial_credit
+    description: >
+      Given 50 log lines, identify anomalous lines, classify each by type
+      (DATA_SERVE_EXCEPTION / DATANODE_WARNING / ANOMALOUS_BLOCK_ACTIVITY),
+      and assign severity (critical / warning / info).
+
+  - id: task3
+    name: Root Cause Analysis
+    difficulty: hard
+    max_steps: 10
+    scoring: rubric
+    description: >
+      Given 200 log lines covering a HDFS failure window, identify the root
+      cause component, reconstruct the failure timeline, list affected
+      components, and propose remediation steps.
+
+observation_space:
+  type: object
+  fields:
+    task_id: string
+    log_content: string
+    current_step: integer
+    max_steps: integer
+    context: object
+    feedback: string
+    done: boolean
+
+action_space:
+  type: object
+  fields:
+    action_type:
+      type: string
+      enum: [analyze, query, submit]
+    payload:
+      type: object
+      description: >
+        analyze: {filter_level, filter_component, filter_keyword, line_range}
+        query:   {question}
+        submit:  task-specific answer payload
+
+reward:
+  range: [0.0, 1.0]
+  type: float
+  partial_credit: true
+  penalties:
+    repeated_action: -0.15
+    invalid_format: -0.10
+    submit_without_exploring: -0.05
+
+dataset:
+  name: HDFS_2k
+  source: loghub
+  size: 2000 lines
+  anomaly_blocks: 16838
+
+environment:
+  python: ">=3.9"
+  dependencies:
+    - pandas
+    - pydantic
+    - gradio
+
+interfaces:
+  - reset()
+  - step(action)
+  - state()
+
+validate_command: openenv validate --config openenv.yaml
+
+baseline:
+  script: baseline.py
+  model: gpt-4o-mini
+  expected_scores:
+    task1: ~0.75
+    task2: ~0.55
+    task3: ~0.45
+    average: ~0.58

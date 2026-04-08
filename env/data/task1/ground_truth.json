@@ -1,0 +1,23 @@
+{
+  "task": "warning_detection",
+  "description": "Identify all line numbers (1-indexed) that contain WARN-level events indicating DataNode serving exceptions.",
+  "warn_lines": [
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20
+  ],
+  "total_lines": 20,
+  "total_warns": 10,
+  "scoring": {
+    "method": "f1_score",
+    "partial_credit": true,
+    "note": "score = F1(predicted_set, actual_set)"
+  }
+}

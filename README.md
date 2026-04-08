@@ -12,7 +12,7 @@ tags:
   - devops
 ---
 
-# '🔍' Log Analyzer — OpenEnv Environment
+# 🔍 Log Analyzer — OpenEnv Environment
 
 > Built as a production-grade OpenEnv environment for real-world SRE workflows.
 

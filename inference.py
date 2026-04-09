@@ -275,6 +275,7 @@ def run_task(
     print(
         f"[END] success=true "
         f"steps={step_count} "
+        f"score={score:.4f} "
         f"rewards={','.join(rewards_list)}"
     )
     partial = final_reward.partial_scores if final_reward else {}

@@ -204,8 +204,6 @@ Deepanshu Giri
 
 ---
 
-## 🏁 Submission Ready
-
 ✔ OpenEnv validated
 ✔ Docker working
 ✔ HF Spaces ready

@@ -1,16 +1,3 @@
----
-title: Log Analyzer - OpenEnv
-emoji: 🔍
-colorFrom: gray
-colorTo: blue
-sdk: docker
-app_file: server/app.py
-pinned: false
-tags:
-  - openenv
-  - log-analysis
-  - devops
----
 
 # 🔍 Log Analyzer — OpenEnv Environment
 
